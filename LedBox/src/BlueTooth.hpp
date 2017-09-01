@@ -13,7 +13,9 @@ namespace bluetooth
 
         BlueTooth(long Baudrate, int8_t Rx, int8_t Tx);
 
-        int receive(int8_t *command, int8_t *intensity, int8_t *duration);
+        int receive(int8_t *command, unsigned char *intensity, unsigned char *duration);
+
+        void send(char Texto);
     private:
         SoftwareSerial Serial1;
     };

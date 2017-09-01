@@ -15,7 +15,7 @@ Serial1(Rx, Tx)
 //*************************************************************************
 
 
-int BlueTooth::receive(int8_t *command, int8_t *intensity, int8_t *duration)
+int BlueTooth::receive(int8_t *command, unsigned char *intensity, unsigned char *duration)
 {
     if(Serial1.available())
 	{
@@ -24,9 +24,14 @@ int BlueTooth::receive(int8_t *command, int8_t *intensity, int8_t *duration)
   		*intensity = Serial1.read();
         while (!Serial1.available());
   		*duration = Serial1.read();
-      //Serial.write(*velocity);
+    //   Serial.write(*velocity);
       return 1;
 
 	}
   return 0;
+}
+
+void BlueTooth::send(char Texto)
+{
+    Serial1.write(Texto);
 }

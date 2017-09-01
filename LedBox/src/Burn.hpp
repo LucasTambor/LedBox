@@ -5,7 +5,7 @@
 #include <Arduino.h>
 
 #define Pin_PWM  5
-#define Pin_Led 16
+#define Pin_Led 12
 
 
 namespace burn
@@ -13,18 +13,22 @@ namespace burn
     class Burn
     {
     private:
-        int8_t _intensity;
+        unsigned char _intensity;
         int32_t _timer;
-        bool _temp1s = false ;
+        bool time_aux_burn = false ;
 
-        void get_PWM(int8_t intensity);
+
+        void get_PWM(unsigned char intensity);
 
     public:
         Burn();
-        int Go(int8_t intensity, int8_t duration);
+        int Go(unsigned char intensity, unsigned char duration, int8_t *ST_Burn );
+        void Stop(void);
+        void Cancel(void);
+        void Slider(unsigned char intensity, unsigned char duration );
     };
 
 
 }
 
-#endif
+#endif//BURN_H
